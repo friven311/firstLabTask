@@ -54,3 +54,6 @@ for(var i = 0; i < close.length; i++)
             parrent.hide(close[i].closest("div"))
         })
     })(i);
+
+
+;
