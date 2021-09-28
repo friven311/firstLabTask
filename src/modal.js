@@ -1,4 +1,3 @@
-import {parrent} from './script.js'
 var overlay = document.querySelector('.overlay'),
     modalBtn = document.getElementById('modalBtn');
 

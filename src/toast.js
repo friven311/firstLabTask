@@ -1,4 +1,3 @@
-import {parrent} from './script.js'
 var err = document.getElementById('errBtn'),
     warn = document.getElementById('warnBtn'),
     suc = document.getElementById('sucBtn'),
