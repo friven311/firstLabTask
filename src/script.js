@@ -1,9 +1,9 @@
 var parrent = {
         show(e) {
-             e.style.display ="flex"
+             e.style.display = "flex"
         },
         hide(e) {
-            e.style.display ="none"
+            e.style.display = "none"
         }            
 };
 export {parrent}

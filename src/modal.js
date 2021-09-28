@@ -6,14 +6,17 @@ var modalObj = {
     __proto__: parrent,
     show(e) {
         parrent.show(e)
+        e.style.visibility = "visible"
+        e.classList.add('is-open')
+        
 
     },
     hide(e) {
         parrent.hide(e)
-
+        e.style.visibility = "hidden"
+        e.classList.remove('is-open')
     }
 }
-
 
 modalBtn.addEventListener("click", function(){modalObj.show(overlay)});
 overlay.addEventListener("click", function(){modalObj.hide(overlay)});
