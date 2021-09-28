@@ -19,4 +19,8 @@ var modalObj = {
 }
 
 modalBtn.addEventListener("click", function(){modalObj.show(overlay)});
-overlay.addEventListener("click", function(){modalObj.hide(overlay)});
+window.onclick = function(event) {
+    if (event.target == overlay) {
+        modalObj.hide(overlay)
+    }
+}
