@@ -4,5 +4,8 @@ var parrent = {
      },
      hide(e) {
        e.style.display = "none"
-    }            
- };
+     },
+     get() {
+          return "<div></div>"
+      }         
+};

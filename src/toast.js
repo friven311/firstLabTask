@@ -8,6 +8,7 @@ var err = document.getElementById('errBtn'),
     error =  document.querySelector('.error'),
     close = document.querySelectorAll('.closeIco');
 
+
 var toasts = {
     __proto__: parrent,
     show(e) {
@@ -15,12 +16,16 @@ var toasts = {
         setTimeout(() => {
             parrent.hide(e)
         }, 5000);
-    }
+    },
+    get(e) {
+        toasts.show(e).call(this)         
+          }   
 }
-suc.addEventListener("click", function(){toasts.show(success)});
-inf.addEventListener("click", function(){toasts.show(info)});
-err.addEventListener("click", function(){toasts.show(error)});
-warn.addEventListener("click", function(){toasts.show(warning)});
+
+suc.addEventListener("click", function(){toasts.get(success)});
+inf.addEventListener("click", function(){toasts.get(info)});
+err.addEventListener("click", function(){toasts.get(error)});
+warn.addEventListener("click", function(){toasts.get(warning)});
 
 for(var i = 0; i < close.length; i++)
     (function(i) { 
