@@ -1,35 +1,125 @@
-var err = document.getElementById('errBtn'),
-    warn = document.getElementById('warnBtn'),
-    suc = document.getElementById('sucBtn'),
-    inf = document.getElementById('infBtn'),
-    success =  document.querySelector('.success'),
-    info =  document.querySelector('.info'),
-    warning =  document.querySelector('.warning'),
-    error =  document.querySelector('.error'),
-    close = document.querySelectorAll('.closeIco');
-
-
-var toasts = {
-    __proto__: parrent,
-    show(e) {
-        parrent.show(e)
-        setTimeout(() => {
-            parrent.hide(e)
-        }, 5000);
-    },
-    get(e) {
-        toasts.show(e).call(this)         
-          }   
+function ToastPop(type, title, text) {
+    ToastPop.superclass.constructor.call(this, type, title, text)
 }
 
-suc.addEventListener("click", function(){toasts.get(success)});
-inf.addEventListener("click", function(){toasts.get(info)});
-err.addEventListener("click", function(){toasts.get(error)});
-warn.addEventListener("click", function(){toasts.get(warning)});
+extend(ToastPop, Parrent)
 
-for(var i = 0; i < close.length; i++)
-    (function(i) { 
-        close[i].addEventListener("click", function() {
-            parrent.hide(close[i].closest("div"))
-        })
-    })(i);
+ToastPop.prototype.show = function() {
+    ToastPop.superclass.show.call(this)
+
+     var bindedHide = InfoPop.superclass.hide.bind(this)
+     setTimeout(bindedHide, 5000)
+};
+
+function InfoPop(type, title, text) {
+    InfoPop.superclass.constructor.call(this, type, title, text);
+  }
+  
+  extend(InfoPop, ToastPop);
+  
+  InfoPop.prototype.getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup info">    
+            <img class="infoIco" src="../img/info.png" alt="logo" >
+            <img src="../img/ico/close.png" class="closeIco" onclick="info.hide()">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+          </div>      
+      </div>`
+  }
+  
+  var info = new InfoPop(
+    "info",
+    "Info!",
+    "Check some stuff"
+  );
+
+  function SucPop(type, title, text) {
+    SucPop.superclass.constructor.call(this, type, title, text);
+  }
+  
+  extend(SucPop, ToastPop);
+  
+  SucPop.prototype.getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup success">    
+        <img src="../img/ico/close.png" class="closeIco" onclick="success.hide()">
+        <img src="../img/succs.png" alt="" class="succsessIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  }
+  
+  var success = new SucPop(
+    "success",
+    "Sucsess!",
+    "EveryThing is fine"
+  );
+
+  function WarnPop(type, title, text) {
+    WarnPop.superclass.constructor.call(this, type, title, text);
+  }
+  
+  extend(WarnPop, ToastPop);
+  
+  WarnPop.prototype.getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup warning">    
+      <img src="../img/ico/close.png" class="closeIco" onclick="warning.hide()">
+      <img src="../img/warn.png" alt="" class="warningIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  }
+  
+  var warning = new WarnPop(
+    "warning",
+    "warning!",
+    "some warning"
+  );
+
+
+
+  function ErrPop(type, title, text) {
+    ErrPop.superclass.constructor.call(this, type, title, text);
+  }
+  
+  extend(ErrPop, ToastPop);
+  
+  ErrPop.prototype.getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup error">    
+        <img src="../img/ico/close.png" class="closeIco" onclick="error.hide()">
+        <img src="../img/error.png" alt="" class="errorIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  }
+  
+  var error = new ErrPop(
+    "error",
+    " Error!!",
+    "Some errors here"
+  );
+
+
+
+
+
+
+

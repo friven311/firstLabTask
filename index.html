@@ -7,60 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&amp;family=Open+Sans:wght@300;400;800&amp;display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    
     <div class="center">
-        <button id="sucBtn">success</button>
-        <button id="infBtn">info</button>
-        <button id="warnBtn">warning</button>
-        <button id="errBtn">error</button>
-        <button id="modalBtn">modal</button>
+        <button id="sucBtn" onclick="success.show()">success</button>
+        <button id="infBtn" onclick="info.show()">info</button>
+        <button id="warnBtn" onclick="warning.show()">warning</button>
+        <button id="errBtn" onclick="error.show()">error</button>
+        <button id="modalBtn" onclick="modal.show()">modal</button>
     </div>
-    <div class="overlay">
-        <div class="modal">
-            <h1>Modal</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptas corporis, ad quae sit reprehenderit amet, ipsam delectus error excepturi suscipit labore.
-            Neque animi vero perspiciatis accusamus doloribus praesentium minus magnam.</p>
-        </div>
-    </div>
-    <div class="flexability">
-        <div class="success">
-            <img src="img/ico/close.png" class="closeIco">
-            <img src="img/succs.png" alt="" class="succsessIco">
-            <div class="col">
-                <span> Sucsess!</span>
-                <span> EveryThing is fine</span>
-            </div>
-        </div>
-        <div class="info">
-            <img src="img/ico/close.png" class="closeIco">
-            <img src="img/info.png" class="infoIco">
-            <div class="col">
-                <span> Info!</span>
-                <span> Check some stuff</span>
-            </div>
-        </div>
-        <div class="warning">
-            <img src="img/ico/close.png" class="closeIco">
-            <img src="img/warn.png" alt="" class="warningIco">
-            <div class="col">
-                <span> Warning!!</span>
-                <span> Some warnings here</span>
-            </div>
-        </div>
-        <div class="error">
-            <img src="img/ico/close.png" class="closeIco">
-            <img src="img/error.png" alt="" class="errorIco">
-            <div class="col">
-                <span> Error!!</span>
-                <span> Some errors here</span>
-            </div>
-        </div>        
-    </div>
+
+    <div class="contMod"></div>
+
+    <script src="src/extend.js"></script>
     <script src="src/script.js"></script>
     <script src="src/toast.js"></script>
-    <script src="src/modal.js"></script>
+    <script src="src/modal.js"></script> 
 </body>
 </html>
