@@ -1,33 +1,26 @@
-function ModPopup(type, title, text) {
-    ModPopup.superclass.constructor.call(this, type, title, text);
+class ModPopup extends Parrent {
+    show() {
+        super.show()
+        const overlay = document.querySelector(`.${this.type}`)
+        
+        overlay.addEventListener('click', (event) =>{    
+          if(event.target == overlay) {
+            modal.hide()
+          }
+        })
+    }
+
+    getTemplate () {
+        return `<div class="${this.type}">
+        <div class="modal">
+            <h1>${this.title}</h1>
+            <p>${this.text}</p>
+        </div>
+    </div>`;
+      };
   }
   
-  extend(ModPopup, Parrent);
-  
-  ModPopup.prototype.show = function () {
-
-    ModPopup.superclass.show.call(this)
-
-    var overlay = document.querySelector(`.${this.type}`)
-    
-    overlay.addEventListener('click', function(event){
-
-      if(event.target == overlay) {
-        modal.hide()
-      }
-    })
-  }
-  
-  ModPopup.prototype.getTemplate = function () {
-    return `<div class="${this.type}">
-    <div class="modal">
-        <h1>${this.title}</h1>
-        <p>${this.text}</p>
-    </div>
-</div>`;
-  };
-  
-  var modal = new ModPopup(
+  const modal = new ModPopup(
     "overlay",
     "Modal Window",
     "some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text"
