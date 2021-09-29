@@ -1,23 +1,12 @@
-function ToastPop(type, title, text) {
-    ToastPop.superclass.constructor.call(this, type, title, text)
+class ToastPop extends Parrent {
+  show () {
+    super.show()
+     setTimeout(() =>{super.hide()}, 5000)
+  }
 }
 
-extend(ToastPop, Parrent)
-
-ToastPop.prototype.show = function() {
-    ToastPop.superclass.show.call(this)
-
-     var bindedHide = InfoPop.superclass.hide.bind(this)
-     setTimeout(bindedHide, 5000)
-};
-
-function InfoPop(type, title, text) {
-    InfoPop.superclass.constructor.call(this, type, title, text);
-  }
-  
-  extend(InfoPop, ToastPop);
-  
-  InfoPop.prototype.getTemplate = function() {
+class InfoPop extends ToastPop  {
+  getTemplate () {
     return `
     <div class="flexability">
       <div class="popup info">    
@@ -30,20 +19,16 @@ function InfoPop(type, title, text) {
           </div>      
       </div>`
   }
-  
-  var info = new InfoPop(
-    "info",
-    "Info!",
-    "Check some stuff"
-  );
+}
 
-  function SucPop(type, title, text) {
-    SucPop.superclass.constructor.call(this, type, title, text);
-  }
-  
-  extend(SucPop, ToastPop);
-  
-  SucPop.prototype.getTemplate = function() {
+const info = new InfoPop(
+  "info",
+  "Info!",
+  "Check some stuff"
+);
+
+class SucPop extends ToastPop{
+  getTemplate = function() {
     return `
     <div class="flexability">
       <div class="popup success">    
@@ -55,21 +40,17 @@ function InfoPop(type, title, text) {
           </div>
         </div>      
       </div>`
-  }
-  
-  var success = new SucPop(
-    "success",
-    "Sucsess!",
-    "EveryThing is fine"
-  );
+  } 
+}
 
-  function WarnPop(type, title, text) {
-    WarnPop.superclass.constructor.call(this, type, title, text);
-  }
-  
-  extend(WarnPop, ToastPop);
-  
-  WarnPop.prototype.getTemplate = function() {
+const success = new SucPop(
+  "success",
+  "Sucsess!",
+  "EveryThing is fine"
+);
+
+class WarnPop extends ToastPop{
+  getTemplate = function() {
     return `
     <div class="flexability">
       <div class="popup warning">    
@@ -82,22 +63,16 @@ function InfoPop(type, title, text) {
         </div>      
       </div>`
   }
-  
-  var warning = new WarnPop(
-    "warning",
-    "warning!",
-    "some warning"
-  );
+}
 
+const warning = new WarnPop(
+  "warning",
+  "warning!",
+  "some warning"
+);
 
-
-  function ErrPop(type, title, text) {
-    ErrPop.superclass.constructor.call(this, type, title, text);
-  }
-  
-  extend(ErrPop, ToastPop);
-  
-  ErrPop.prototype.getTemplate = function() {
+class ErrPop extends ToastPop{
+  getTemplate = function() {
     return `
     <div class="flexability">
       <div class="popup error">    
@@ -109,17 +84,11 @@ function InfoPop(type, title, text) {
           </div>
         </div>      
       </div>`
-  }
-  
-  var error = new ErrPop(
-    "error",
-    " Error!!",
-    "Some errors here"
-  );
+  }   
+}
 
-
-
-
-
-
-
+const error = new ErrPop(
+  "error",
+  " Error!!",
+  "Some errors here"
+);
