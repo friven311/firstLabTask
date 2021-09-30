@@ -1,30 +1,94 @@
-var err = document.getElementById('errBtn'),
-    warn = document.getElementById('warnBtn'),
-    suc = document.getElementById('sucBtn'),
-    inf = document.getElementById('infBtn'),
-    success =  document.querySelector('.success'),
-    info =  document.querySelector('.info'),
-    warning =  document.querySelector('.warning'),
-    error =  document.querySelector('.error'),
-    close = document.querySelectorAll('.closeIco');
-
-var toasts = {
-    __proto__: parrent,
-    show(e) {
-        parrent.show(e)
-        setTimeout(() => {
-            parrent.hide(e)
-        }, 5000);
-    }
+class ToastPop extends Parrent {
+  show () {
+    super.show()
+     setTimeout(() =>{super.hide()}, 5000)
+  }
 }
-suc.addEventListener("click", function(){toasts.show(success)});
-inf.addEventListener("click", function(){toasts.show(info)});
-err.addEventListener("click", function(){toasts.show(error)});
-warn.addEventListener("click", function(){toasts.show(warning)});
 
-for(var i = 0; i < close.length; i++)
-    (function(i) { 
-        close[i].addEventListener("click", function() {
-            parrent.hide(close[i].closest("div"))
-        })
-    })(i);
+class InfoPop extends ToastPop  {
+  getTemplate () {
+    return `
+    <div class="flexability">
+      <div class="popup info">    
+            <img class="infoIco" src="../img/info.png" alt="logo" >
+            <img src="../img/ico/close.png" class="closeIco" onclick="info.hide()">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+          </div>      
+      </div>`
+  }
+}
+
+const info = new InfoPop(
+  "info",
+  "Info!",
+  "Check some stuff"
+);
+
+class SucPop extends ToastPop{
+  getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup success">    
+        <img src="../img/ico/close.png" class="closeIco" onclick="success.hide()">
+        <img src="../img/succs.png" alt="" class="succsessIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  } 
+}
+
+const success = new SucPop(
+  "success",
+  "Sucsess!",
+  "EveryThing is fine"
+);
+
+class WarnPop extends ToastPop{
+  getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup warning">    
+      <img src="../img/ico/close.png" class="closeIco" onclick="warning.hide()">
+      <img src="../img/warn.png" alt="" class="warningIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  }
+}
+
+const warning = new WarnPop(
+  "warning",
+  "warning!",
+  "some warning"
+);
+
+class ErrPop extends ToastPop{
+  getTemplate = function() {
+    return `
+    <div class="flexability">
+      <div class="popup error">    
+        <img src="../img/ico/close.png" class="closeIco" onclick="error.hide()">
+        <img src="../img/error.png" alt="" class="errorIco">
+          <div class="col" >
+            <span>${this.title}</span>
+            <span>${this.text}</span>
+          </div>
+        </div>      
+      </div>`
+  }   
+}
+
+const error = new ErrPop(
+  "error",
+  " Error!!",
+  "Some errors here"
+);
